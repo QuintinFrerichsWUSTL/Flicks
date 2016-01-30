@@ -11,6 +11,7 @@ import AFNetworking
 import MBProgressHUD
 class MoviesViewController: UIViewController, UICollectionViewDataSource,UICollectionViewDelegate {
     
+ 
     @IBOutlet weak var collectionView: UICollectionView!
     //@IBOutlet weak var tableView: UITableView!
     
@@ -87,7 +88,7 @@ class MoviesViewController: UIViewController, UICollectionViewDataSource,UIColle
         task.resume()
     }
     
-    func collectionView(collectionView: UICollectionView, numberOfRowsInSection section: Int) -> Int{
+    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int{
         
         if let movies = movies {
             return movies.count
@@ -97,8 +98,8 @@ class MoviesViewController: UIViewController, UICollectionViewDataSource,UIColle
         
         
     }
-    func collectionView(collectionView: UICollectionView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell{
-        let cell = collectionView.dequeueReusableCellWithIdentifier("ImageCell", forIndexPath: indexPath) as! ImageCell
+    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell{
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("ImageCell", forIndexPath: indexPath) as! ImageCell
         let movie = movies![indexPath.row]
         //let title = movie["title"] as! String
         //let overview = movie["overview"] as! String
@@ -108,7 +109,7 @@ class MoviesViewController: UIViewController, UICollectionViewDataSource,UIColle
         let baseUrl = "http://image.tmdb.org/t/p/w500"
         let posterPath = movie["poster_path"] as! String
         let imageUrl = NSURL(string: baseUrl + posterPath)
-        cell.posterView.setImageWithURL(imageUrl!)
+        cell.pictureView.setImageWithURL(imageUrl!)
         return cell
     }
     
