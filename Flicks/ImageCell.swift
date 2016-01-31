@@ -10,5 +10,6 @@ import UIKit
 
 class ImageCell: UICollectionViewCell {
     
+    @IBOutlet weak var titleLabel: UITextField!
     @IBOutlet weak var pictureView: UIImageView!
 }

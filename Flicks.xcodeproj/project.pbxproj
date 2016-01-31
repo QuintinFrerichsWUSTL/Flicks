@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		05098A761C5D270C00B465D6 /* ImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05098A751C5D270C00B465D6 /* ImageCell.swift */; };
+		051BAA6A1C5E96E1007066F0 /* error.png in Resources */ = {isa = PBXBuildFile; fileRef = 051BAA691C5E96E1007066F0 /* error.png */; };
 		0543007A1C54894A00365A6C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054300791C54894A00365A6C /* AppDelegate.swift */; };
 		0543007F1C54894A00365A6C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0543007D1C54894A00365A6C /* Main.storyboard */; };
 		054300811C54894A00365A6C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 054300801C54894A00365A6C /* Assets.xcassets */; };
@@ -18,6 +19,7 @@
 
 /* Begin PBXFileReference section */
 		05098A751C5D270C00B465D6 /* ImageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageCell.swift; sourceTree = "<group>"; };
+		051BAA691C5E96E1007066F0 /* error.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = error.png; path = ../../error.png; sourceTree = "<group>"; };
 		054300761C54894A00365A6C /* Flicks.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Flicks.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		054300791C54894A00365A6C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0543007E1C54894A00365A6C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -70,6 +72,7 @@
 				054300801C54894A00365A6C /* Assets.xcassets */,
 				054300821C54894A00365A6C /* LaunchScreen.storyboard */,
 				054300851C54894A00365A6C /* Info.plist */,
+				051BAA691C5E96E1007066F0 /* error.png */,
 			);
 			path = Flicks;
 			sourceTree = "<group>";
@@ -171,6 +174,7 @@
 			files = (
 				054300841C54894A00365A6C /* LaunchScreen.storyboard in Resources */,
 				054300811C54894A00365A6C /* Assets.xcassets in Resources */,
+				051BAA6A1C5E96E1007066F0 /* error.png in Resources */,
 				0543007F1C54894A00365A6C /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
