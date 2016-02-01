@@ -40,7 +40,7 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ImageCell" id="lPK-ro-mLa" customClass="ImageCell" customModule="Flicks" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="64" width="141" height="175"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="141" height="175"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="141" height="175"/>
@@ -140,7 +140,7 @@
         <!--Navigation Controller-->
         <scene sceneID="Mmn-K1-Hbf">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="mEd-LS-yFo" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="MoviesNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="mEd-LS-yFo" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="H84-fE-vuk">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>

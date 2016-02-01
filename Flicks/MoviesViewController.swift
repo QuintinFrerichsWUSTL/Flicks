@@ -12,9 +12,7 @@ import MBProgressHUD
 class MoviesViewController: UIViewController, UICollectionViewDataSource,UICollectionViewDelegate,UISearchBarDelegate {
     @IBOutlet weak var errorView: UIView!
     @IBOutlet weak var collectionView: UICollectionView!
-    
-    
-    
+    var endpoint: String!
     var movies : [NSDictionary]?
 //    let data = ["The Revenant", "The Big Short", "The Hateful Eight", "The 5 Wave", "Kung-Fu Panda 3", "Batman: Bad Blood", "Joy", "Dirty Grandpa", "Ride Along 2", "The Boy", "Que Vado?", "13 Hours", "Exposed", "Exposed: Some Secrets Are Better Left Buried", ]
 //    var filteredData: [String]!
@@ -31,7 +29,7 @@ class MoviesViewController: UIViewController, UICollectionViewDataSource,UIColle
         searchBar.delegate = self
        //filteredData = data
         let apiKey = "a07e22bc18f5cb106bfe4cc1f83ad8ed"
-        let url = NSURL(string: "https://api.themoviedb.org/3/movie/now_playing?api_key=\(apiKey)")
+        let url = NSURL(string: "https://api.themoviedb.org/3/movie/\(endpoint)?api_key=\(apiKey)")
         let request = NSURLRequest(
             URL: url!,
             cachePolicy: NSURLRequestCachePolicy.ReloadIgnoringLocalCacheData,
