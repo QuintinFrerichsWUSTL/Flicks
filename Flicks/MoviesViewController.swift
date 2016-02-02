@@ -14,10 +14,7 @@ class MoviesViewController: UIViewController, UICollectionViewDataSource,UIColle
     @IBOutlet weak var collectionView: UICollectionView!
     var endpoint: String!
     var movies : [NSDictionary]?
-//    let data = ["The Revenant", "The Big Short", "The Hateful Eight", "The 5 Wave", "Kung-Fu Panda 3", "Batman: Bad Blood", "Joy", "Dirty Grandpa", "Ride Along 2", "The Boy", "Que Vado?", "13 Hours", "Exposed", "Exposed: Some Secrets Are Better Left Buried", ]
-//    var filteredData: [String]!
-
-    
+    var filteredData: [NSDictionary]!
     @IBOutlet weak var searchBar: UISearchBar!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,7 +24,6 @@ class MoviesViewController: UIViewController, UICollectionViewDataSource,UIColle
         collectionView.dataSource = self
         collectionView.delegate = self
         searchBar.delegate = self
-       //filteredData = data
         let apiKey = "a07e22bc18f5cb106bfe4cc1f83ad8ed"
         let url = NSURL(string: "https://api.themoviedb.org/3/movie/\(endpoint)?api_key=\(apiKey)")
         let request = NSURLRequest(
@@ -60,7 +56,7 @@ class MoviesViewController: UIViewController, UICollectionViewDataSource,UIColle
                             self.collectionView.reloadData()
                     }
                 }
-             
+             self.filteredData = self.movies
                 
         })
         task.resume()
@@ -101,8 +97,11 @@ class MoviesViewController: UIViewController, UICollectionViewDataSource,UIColle
     }
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell{
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("ImageCell", forIndexPath: indexPath) as! ImageCell
-        let movie = movies![indexPath.row]
-        let title = movie["title"] as! String
+        let movie = filteredData![indexPath.row]
+        let backgroundView = UIView()
+        backgroundView.backgroundColor = UIColor.redColor()
+        cell.selectedBackgroundView = backgroundView
+        //let title = movie["title"] as! String
         //filteredData = ["title"]
        // cell.titleLabel?.text = filteredData[indexPath.row]
         let baseUrl = "http://image.tmdb.org/t/p/w500"
@@ -114,27 +113,26 @@ class MoviesViewController: UIViewController, UICollectionViewDataSource,UIColle
     }
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int{
         
-        if let movies = movies {
-            return movies.count
+        if let filteredData = filteredData {
+            return filteredData.count
         }else{
             return 0
         }
-       // return filteredData.count
+      
         
         
     }
 //    func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
-//        filteredData = searchText.isEmpty ? data : data.filter({(dataString: String) -> Bool in
+//        filteredData = searchDictionary.isEmpty ? movies : movies.filter({(dataString: String) -> Bool in
 //            return dataString.rangeOfString(searchText, options: .CaseInsensitiveSearch) != nil
 //        })
 //    }
-    
+//    
 //    func searchBar2(searchBar: UISearchBar, textDidChange searchText: String) {
 //        if searchText.isEmpty {
-//            filteredData = data
+//            filteredData = movies
 //        } else {
-//            
-//            filteredData = data.filter({(dataItem: String) -> Bool in
+//            filteredData = movies!.filter({(dataItem: String) -> Bool in
 //                if dataItem.rangeOfString(searchText, options: .CaseInsensitiveSearch) != nil {
 //                    return true
 //                } else {
