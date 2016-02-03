@@ -19,6 +19,11 @@ class DetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        if let tabBarController = tabBarController?.tabBar
+        {
+            tabBarController.tintColor = UIColor(red:0.2, green:0.8, blue: 0.8, alpha: 0.8)
+            tabBarController.backgroundColor = UIColor(red:1.0, green: 0.1, blue: 0.1, alpha: 0.9)
+        }
         scrollView.contentSize = CGSize(width: scrollView.frame.size.width, height: infoView.frame.origin.y + infoView.frame.size.height)
         print(movie)
         let baseUrl = "http://image.tmdb.org/t/p/w500"

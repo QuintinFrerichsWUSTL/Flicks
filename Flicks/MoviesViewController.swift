@@ -10,14 +10,39 @@ import UIKit
 import AFNetworking
 import MBProgressHUD
 class MoviesViewController: UIViewController, UICollectionViewDataSource,UICollectionViewDelegate,UISearchBarDelegate {
+    
     @IBOutlet weak var errorView: UIView!
     @IBOutlet weak var collectionView: UICollectionView!
+    
+    @IBOutlet weak var searchBar: UISearchBar!
     var endpoint: String!
+    
+    
     var movies : [NSDictionary]?
     var filteredData: [NSDictionary]!
-    @IBOutlet weak var searchBar: UISearchBar!
     override func viewDidLoad() {
         super.viewDidLoad()
+        if let tabBarController = tabBarController?.tabBar
+        {
+            tabBarController.tintColor = UIColor(red:0.2, green:0.8, blue: 0.8, alpha: 0.8)
+            tabBarController.backgroundColor = UIColor(red:1.0, green: 0.1, blue: 0.1, alpha: 0.9)
+        }
+        if let navigationBar = navigationController?.navigationBar{
+            navigationBar.backgroundColor = UIColor(red:1.0, green: 0.1, blue: 0.1, alpha: 0.9)
+        let shadow = NSShadow()
+        shadow.shadowColor = UIColor.orangeColor().colorWithAlphaComponent(0.5)
+            shadow.shadowOffset = CGSizeMake(2,2);
+            shadow.shadowBlurRadius = 4;
+            navigationBar.titleTextAttributes = [
+                NSFontAttributeName : UIFont.boldSystemFontOfSize(22),
+                NSForegroundColorAttributeName: UIColor(red:1.0, green:0.2,blue:0.2,alpha:1.0),
+                NSShadowAttributeName : shadow
+                ]
+            
+            
+        
+        }
+     
         let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action:"refreshControlAction:", forControlEvents: UIControlEvents.ValueChanged)
         collectionView.insertSubview(refreshControl, atIndex:0)
@@ -89,6 +114,7 @@ class MoviesViewController: UIViewController, UICollectionViewDataSource,UIColle
                             print("response: \(responseDictionary)")
                             self.movies = responseDictionary["results"] as? [NSDictionary]
                             self.collectionView.reloadData()
+                            self.filteredData = self.movies
                     }
                 }
                 refreshControl.endRefreshing()
@@ -98,9 +124,7 @@ class MoviesViewController: UIViewController, UICollectionViewDataSource,UIColle
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell{
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("ImageCell", forIndexPath: indexPath) as! ImageCell
         let movie = filteredData![indexPath.row]
-        let backgroundView = UIView()
-        backgroundView.backgroundColor = UIColor.redColor()
-        cell.selectedBackgroundView = backgroundView
+        
         //let title = movie["title"] as! String
         //filteredData = ["title"]
        // cell.titleLabel?.text = filteredData[indexPath.row]
@@ -108,6 +132,8 @@ class MoviesViewController: UIViewController, UICollectionViewDataSource,UIColle
         if let posterPath = movie["poster_path"] as? String{
         let imageUrl = NSURL(string: baseUrl + posterPath)
         cell.pictureView.setImageWithURL(imageUrl!)
+            //cell.foregroundView.backgroundColor = UIColor.redColor()
+            cell.selectedBackgroundView = cell.foregroundView!
         }
         return cell
     }
@@ -122,26 +148,12 @@ class MoviesViewController: UIViewController, UICollectionViewDataSource,UIColle
         
         
     }
-//    func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
-//        filteredData = searchDictionary.isEmpty ? movies : movies.filter({(dataString: String) -> Bool in
-//            return dataString.rangeOfString(searchText, options: .CaseInsensitiveSearch) != nil
-//        })
-//    }
-//    
-//    func searchBar2(searchBar: UISearchBar, textDidChange searchText: String) {
-//        if searchText.isEmpty {
-//            filteredData = movies
-//        } else {
-//            filteredData = movies!.filter({(dataItem: String) -> Bool in
-//                if dataItem.rangeOfString(searchText, options: .CaseInsensitiveSearch) != nil {
-//                    return true
-//                } else {
-//                    return false
-//                }
-//            })
-//        }
-//        collectionView.reloadData()
-//    }
+    func searchBar(searchBar: UISearchBar, textDidChange searchText:String){
+        filteredData = searchText.isEmpty ? movies:
+            movies?.filter({(movie: NSDictionary)->Bool in
+                return (movie["title"] as! String).rangeOfString(searchText) != nil})
+        collectionView.reloadData()
+    }
 
     func searchBarTextDidBeginEditing(searchBar: UISearchBar) {
         self.searchBar.showsCancelButton = true
@@ -150,12 +162,13 @@ class MoviesViewController: UIViewController, UICollectionViewDataSource,UIColle
         searchBar.showsCancelButton = false
         searchBar.text = ""
         searchBar.resignFirstResponder()
+        filteredData = movies 
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         let cell = sender as! UICollectionViewCell
         let indexPath = collectionView.indexPathForCell(cell)
-        let movie = movies![indexPath!.row]
+        let movie = filteredData![indexPath!.row]
         let detailViewController = segue.destinationViewController
         as!DetailViewController
         detailViewController.movie = movie

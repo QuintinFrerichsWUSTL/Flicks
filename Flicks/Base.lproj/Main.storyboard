@@ -13,11 +13,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <searchBar contentMode="redraw" id="7g0-WO-H7h">
-                                <rect key="frame" x="-4" y="60" width="324" height="44"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </searchBar>
                             <view contentMode="scaleToFill" id="eX8-0E-Ef7">
                                 <rect key="frame" x="5" y="63" width="305" height="41"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -29,21 +24,21 @@
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="UgE-7N-6dP" customClass="CollectionView" customModule="Flicks" customModuleProvider="target">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFill" dataMode="prototypes" id="UgE-7N-6dP" customClass="CollectionView" customModule="Flicks" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="104" width="320" height="433"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="PRR-fp-cMD">
-                                    <size key="itemSize" width="141" height="175"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="PRR-fp-cMD">
+                                    <size key="itemSize" width="160" height="175"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ImageCell" id="lPK-ro-mLa" customClass="ImageCell" customModule="Flicks" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="141" height="175"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="160" height="175"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="141" height="175"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="160" height="175"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" id="GVi-Rs-XH6" userLabel="titleLabel">
@@ -54,13 +49,19 @@
                                                     <textInputTraits key="textInputTraits"/>
                                                 </textField>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="7th-Ag-Wg8">
-                                                    <rect key="frame" x="8" y="-7" width="148" height="190"/>
+                                                    <rect key="frame" x="8" y="-7" width="152" height="190"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
+                                                <view alpha="0.75" contentMode="scaleToFill" id="ojv-Xm-TzO">
+                                                    <rect key="frame" x="0.0" y="0.0" width="160" height="175"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <color key="backgroundColor" red="1" green="0.10315079925772563" blue="0.052666706807346308" alpha="0.72717198581560283" colorSpace="calibratedRGB"/>
+                                                </view>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
                                         <connections>
+                                            <outlet property="foregroundView" destination="ojv-Xm-TzO" id="Fvt-iz-PAd"/>
                                             <outlet property="pictureView" destination="7th-Ag-Wg8" id="OKy-i0-077"/>
                                             <outlet property="titleLabel" destination="GVi-Rs-XH6" id="74a-sp-agY"/>
                                             <segue destination="T3H-Gj-LIR" kind="push" id="s2m-gO-HMB"/>
@@ -68,6 +69,11 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
+                            <searchBar contentMode="redraw" id="7g0-WO-H7h">
+                                <rect key="frame" x="-2" y="64" width="324" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -75,7 +81,7 @@
                     <connections>
                         <outlet property="collectionView" destination="UgE-7N-6dP" id="oVn-fp-sja"/>
                         <outlet property="errorView" destination="eX8-0E-Ef7" id="DlU-uy-j4D"/>
-                        <outlet property="searchBar" destination="7g0-WO-H7h" id="Ngh-QG-59m"/>
+                        <outlet property="searchBar" destination="7g0-WO-H7h" id="RQD-PH-Dqm"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -142,7 +148,7 @@
             <objects>
                 <navigationController storyboardIdentifier="MoviesNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="mEd-LS-yFo" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="H84-fE-vuk">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" shadowImage="movies" id="H84-fE-vuk">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -158,5 +164,6 @@
     </scenes>
     <resources>
         <image name="error message" width="277" height="79"/>
+        <image name="movies" width="50" height="50"/>
     </resources>
 </document>
