@@ -12,12 +12,16 @@ The following **required** functionality is complete:
 - [ X] Poster images are loaded using the UIImageView category in the AFNetworking library.
 - [ X] User sees a loading state while waiting for the movies API.
 - [X ] User can pull to refresh the movie list.
-
+- [ X] User can view movie details by tapping on a cell.
+- [ X] User can select from a tab bar for either **Now Playing** or **Top Rated** movies.
+- [ X] Customize the selection effect of the cell.
 The following **optional** features are implemented:
 
 - [ X] User sees an error message when there's a networking error.
 - [ X] Movies are displayed using a CollectionView instead of a TableView.
-- [ incomplete, but started] User can search for a movie.
+- [ X] User can search for a movie.
+- [X ] Customize the navigation bar.
+- [ ] For the large poster, load the low resolution image first and then switch to the high resolution image when complete.
 - [ ] All images fade in as they are loading.
 - [ ] Customize the UI.
 
@@ -27,8 +31,8 @@ The following **additional** features are implemented:
 
 Please list two areas of the assignment you'd like to **discuss further with your peers** during the next class (examples include better ways to implement something, how to extend your app in certain ways, etc):
 
-1. Optional features, still haven't been able to get search working 
-2. How to implement fade with images 
+1. Better way to implement selection effect with collection view
+2. Ways to improve the look of UI
 
 # Video Walkthrough 
 
@@ -57,3 +61,14 @@ Describe any challenges encountered while building the app.
     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
     See the License for the specific language governing permissions and
     limitations under the License.
+
+
+## Video Walkthrough 
+
+Here's a walkthrough of implemented user stories:
+
+http://i.imgur.com/YqlsAXz.gif
+
+GIF created with [LiceCap](http://www.cockos.com/licecap/).
+
+
