@@ -22,12 +22,10 @@ class MoviesViewController: UIViewController, UICollectionViewDataSource,UIColle
     var filteredData: [NSDictionary]!
     override func viewDidLoad() {
         super.viewDidLoad()
-        if let tabBarController = tabBarController?.tabBar
-        {
-            tabBarController.tintColor = UIColor(red:0.2, green:0.8, blue: 0.8, alpha: 0.8)
-            tabBarController.backgroundColor = UIColor(red:1.0, green: 0.1, blue: 0.1, alpha: 0.9)
-        }
-        if let navigationBar = navigationController?.navigationBar{
+        searchBar.backgroundColor = UIColor(red:1.0, green: 0.1, blue: 0.1, alpha: 0.9)
+        //collectionView.backgroundColor = UIColor.orangeColor().colorWithAlphaComponent(0.8)
+        
+                if let navigationBar = navigationController?.navigationBar{
             navigationBar.backgroundColor = UIColor(red:1.0, green: 0.1, blue: 0.1, alpha: 0.9)
         let shadow = NSShadow()
         shadow.shadowColor = UIColor.orangeColor().colorWithAlphaComponent(0.5)
