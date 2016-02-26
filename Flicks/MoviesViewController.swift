@@ -122,10 +122,6 @@ class MoviesViewController: UIViewController, UICollectionViewDataSource,UIColle
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell{
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("ImageCell", forIndexPath: indexPath) as! ImageCell
         let movie = filteredData![indexPath.row]
-        
-        //let title = movie["title"] as! String
-        //filteredData = ["title"]
-       // cell.titleLabel?.text = filteredData[indexPath.row]
         let baseUrl = "http://image.tmdb.org/t/p/w500"
         if let posterPath = movie["poster_path"] as? String{
         let imageUrl = NSURL(string: baseUrl + posterPath)
